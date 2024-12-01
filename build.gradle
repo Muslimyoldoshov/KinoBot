@@ -1,0 +1,57 @@
+plugins {
+    id 'java' // Java plaginini qo'shish
+    id 'org.springframework.boot' version '3.2.2' // Spring Boot plaginini qo'shish
+    id 'io.spring.dependency-management' version '1.1.4' // Dependency Management plaginini qo'shish
+}
+
+group = 'org.example' // Loyihaning group nomi
+version = '0.0.1-SNAPSHOT' // Loyihaning versiyasi
+
+java {
+    sourceCompatibility = '17' // Java versiyasini belgilash
+}
+
+repositories {
+    mavenCentral() // Maven markazidan kutubxonalar olish
+}
+
+dependencies {
+    // Spring Boot Starter Web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Telegram Bots
+    implementation 'org.telegram:telegrambots:5.2.0'
+
+    // JAXB (JPA va Hibernate uchun) - Jakarta versiyasi
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.1'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:3.0.1'
+
+    // JAXB javax mosligi uchun
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+
+    // Spring Data JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok' // Lombokni faqat kompilatsiya vaqtida ishlatish
+    annotationProcessor 'org.projectlombok:lombok' // Lombokni annotation processor sifatida ishlatish
+
+    // PostgreSQL Database driver
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // RSQL parser
+    implementation 'cz.jirutka.rsql:rsql-parser:2.1.0'
+
+    // JWT (JSON Web Token) qo'llab-quvvatlash
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+    // Test kutubxonalari
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform() // Testlarni JUnit Platform bilan bajarish
+}
